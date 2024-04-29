@@ -1,6 +1,10 @@
 import 'dart:io';
 import 'usuario.dart';
+import 'database.dart';
 class app{
+
+  //Constructores
+  
  
   menuInicial(){
     int? opcion;
@@ -63,7 +67,7 @@ class app{
     } while(_menulogueadorespuestanovalida ( opcion));
     switch(opcion){
       case 1:
-      escribirnombre();
+      insertarnombre();
         break;
      
       case 2:
@@ -85,14 +89,21 @@ class app{
       menuLogueado(resultado);
     }
   }
-
-
-insertarnombre()async{
-    List<String> listadonombre = await Usuario().all();
-    for(Usuario elemento in listadonombre){
-      stdout.writeln(elemento.nombre);
+  insertarnombre() async {
+    Usuario nombre = new nombre;
+    var conn = await Database().conexion();
+    try {
+      await conn.query('INSERT INTO usuarios (nombre) VALUES (?)',
+          [nombre]);
+      print('nombre insertado correctamente');
+    } catch (e) {
+      print(e);
+    } finally {
+      await conn.close();
+    }
   
-}
+
+
   
 }
 }

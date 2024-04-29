@@ -12,6 +12,7 @@ class Usuario{
     String? direccioncorreo;
 
 
+
   //Constructores
   Usuario();
 
@@ -21,6 +22,7 @@ class Usuario{
     this.password = map['password'];
     this.direccion = map['direccion'];
     this.direccioncorreo = map ['direccioncorreo'];
+   
   
 
 
@@ -76,6 +78,7 @@ class Usuario{
       await conn.close();
     }
     }
+    
   
   }
 

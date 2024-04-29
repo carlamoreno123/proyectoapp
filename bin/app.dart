@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'usuario.dart';
- menuInicial(){
+class app{
+ 
   menuInicial(){
     int? opcion;
     do{
@@ -20,22 +21,82 @@ import 'usuario.dart';
 
     }
   }
-  
- registrarusuario()async{
-    var respuesta;
+   registrarusuario()async{
+     var respuesta;
+     var contestacion;
     do{
 
       stdout.write('''Hola, bienvenido estas apunto de resgistrarte en este centro comercial, porfavor
       rellene estos datos
       1- nombre:
       2-appelido:
-      3-direccion
-      4-direccioncorreo
+      3-direccion:
+      4-direccioncorreo:
+
     ''');
        String respuesta= stdin.readLineSync()?? 'e';
        int.tryParse(respuesta);
 
+
     }while(respuesta==null && respuesta!=1 && respuesta!=2  && respuesta!=3 && respuesta!=4 );
+    switch(contestacion){
+      case 1:
+      
+        break;
+    }
+
   }
- }
+   
+
+
+   menuLogueado(Usuario usuario) async {
+    int? opcion;
+    String? nombre = usuario.nombre;
+    do{
+      stdout.writeln('''Hola, $nombre, elige una opción
+      1 - Listar usuarios
+      2 - Listar mis mascotas
+      3 - insertar mascota
+      4-salir
+      ''');
+      opcion = parsearrespuesta();
+    } while(_menulogueadorespuestanovalida ( opcion));
+    switch(opcion){
+      case 1:
+      escribirnombre();
+        break;
+     
+      case 2:
+        print('adios!');
+      
+    }
+  }
+  login() async {
+    Usuario usuario = new Usuario();
+    stdout.writeln('Introduce tu nombre de usuario');
+    usuario.nombre = stdin.readLineSync();
+    stdout.writeln('Introduce tu constraseña');
+    usuario.password = stdin.readLineSync();
+    var resultado = await usuario.loginUsuario();
+    if(resultado == false){
+      stdout.writeln('Tu nombre de usuario o contraseña son incorrectos');
+      menuInicial();
+    } else {
+      menuLogueado(resultado);
+    }
+  }
+
+
+insertarnombre()async{
+    List<String> listadonombre = await Usuario().all();
+    for(Usuario elemento in listadonombre){
+      stdout.writeln(elemento.nombre);
+  
+}
+  
+}
+}
   bool _menuinicialrespuestanovalida (var opcion) => opcion == null || opcion != 1 && opcion !=2;
+   bool _menulogueadorespuestanovalida (var opcion) =>opcion == null || opcion != 1 && opcion !=2 && opcion !=3 && opcion !=4;
+   int? parsearrespuesta() => int.tryParse(stdin.readLineSync()?? 'e');
+

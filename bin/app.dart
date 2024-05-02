@@ -95,11 +95,11 @@ class app{
     }
   }
   insertarnombre() async {
-    Usuario nombre= new nombre;
+   // Usuario nombre= new nombre;
     var conn = await Database().conexion();
     try {
-      await conn.query('INSERT INTO usuarios (nombre) VALUES (?)',
-          [nombre]);
+      //await conn.query('INSERT INTO usuarios (nombre) VALUES (?)',
+         // [nombre]);
       print('nombre insertado correctamente');
     } catch (e) {
       print(e);

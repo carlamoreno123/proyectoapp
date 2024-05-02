@@ -11,10 +11,9 @@ class Usuario{
     String? direccion;
     String? direccioncorreo;
 
-
-
   //Constructores
-  Usuario();
+    
+    Usuario();
 
    Usuario.fromMap( map) {
     this.idusuario = map['idusuario'];
@@ -45,6 +44,7 @@ class Usuario{
     }
   }
 }
+
 
   loginUsuario()async{
     var conn = await Database().conexion();
@@ -78,8 +78,8 @@ class Usuario{
       await conn.close();
     }
     }
+   
     
-  
   }
 
 

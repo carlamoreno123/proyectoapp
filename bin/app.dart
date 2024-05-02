@@ -67,7 +67,7 @@ class app{
     } while(_menulogueadorespuestanovalida ( opcion));
     switch(opcion){
       case 1:
-      insertarnombre(usuario,nombre);
+      insertarnombre();
         break;
      
       case 2:
@@ -89,8 +89,8 @@ class app{
       menuLogueado(resultado);
     }
   }
-  insertarnombre(usuario,nombre) async {
-    Usuario nombre = new nombre;
+  insertarnombre() async {
+    Usuario nombre= new nombre;
     var conn = await Database().conexion();
     try {
       await conn.query('INSERT INTO usuarios (nombre) VALUES (?)',
@@ -101,11 +101,15 @@ class app{
     } finally {
       await conn.close();
     }
-  
+  }
+
+  calculardinerocentrocomercial()async{
+  try{
+    
+  }
 
 
-  
-}
+  }
 }
   bool _menuinicialrespuestanovalida (var opcion) => opcion == null || opcion != 1 && opcion !=2;
    bool _menulogueadorespuestanovalida (var opcion) =>opcion == null || opcion != 1 && opcion !=2 && opcion !=3 && opcion !=4;

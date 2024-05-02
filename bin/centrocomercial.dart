@@ -3,6 +3,6 @@ import 'Database.dart';
 import 'app.dart';
 
 main() async {
-  await Database().instalacion();
+  await Database().instalacion(); 
   app().menuInicial();
 }

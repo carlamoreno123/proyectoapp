@@ -108,21 +108,7 @@ class app{
     }
   }
 
-  calculardinerocentrocomercial()async{
-  try{
-    do{
-      stdout.writeln('vamos a calcular los ingresos del mes recaudados en todo el centro comercial');
-      List<String> conjuntotiendas= 
-    }
-    
-  } catch (e) {
-      print(e);
-    } finally {
-      await conn.close();
 
-
-  }
-}
 }
   bool _menuinicialrespuestanovalida (var opcion) => opcion == null || opcion != 1 && opcion !=2;
    bool _menulogueadorespuestanovalida (var opcion) =>opcion == null || opcion != 1 && opcion !=2 && opcion !=3 && opcion !=4;

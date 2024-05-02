@@ -26,7 +26,7 @@ class app{
         login();
         break;
       case 3:
-      calculardinerocentrocomercial();
+   
 
     }
   }

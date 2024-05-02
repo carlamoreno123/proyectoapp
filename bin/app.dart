@@ -67,7 +67,7 @@ class app{
     } while(_menulogueadorespuestanovalida ( opcion));
     switch(opcion){
       case 1:
-      insertarnombre();
+      insertarnombre(usuario,nombre);
         break;
      
       case 2:
@@ -89,7 +89,7 @@ class app{
       menuLogueado(resultado);
     }
   }
-  insertarnombre() async {
+  insertarnombre(usuario,nombre) async {
     Usuario nombre = new nombre;
     var conn = await Database().conexion();
     try {

@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'usuario.dart';
 import 'database.dart';
+import 'tiendas.dart';
+import 'dart:convert';
 class app{
 
   //Constructores
@@ -11,7 +13,8 @@ class app{
     do{
       stdout.writeln('''Elige una opción
       1 - Crear usuario
-      2 - Log in''');
+      2 - Log in
+      3 - Calcular ingresos''');
       String respuesta = stdin.readLineSync() ?? 'e';
       opcion = int.tryParse(respuesta);
     } while( _menuinicialrespuestanovalida ( opcion));
@@ -22,6 +25,8 @@ class app{
       case 2:
         login();
         break;
+      case 3:
+      calculardinerocentrocomercial();
 
     }
   }
@@ -105,11 +110,19 @@ class app{
 
   calculardinerocentrocomercial()async{
   try{
+    do{
+      stdout.writeln('vamos a calcular los ingresos del mes recaudados en todo el centro comercial');
+      List<String> conjuntotiendas= 
+    }
     
-  }
+  } catch (e) {
+      print(e);
+    } finally {
+      await conn.close();
 
 
   }
+}
 }
   bool _menuinicialrespuestanovalida (var opcion) => opcion == null || opcion != 1 && opcion !=2;
    bool _menulogueadorespuestanovalida (var opcion) =>opcion == null || opcion != 1 && opcion !=2 && opcion !=3 && opcion !=4;

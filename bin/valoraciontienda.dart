@@ -4,24 +4,41 @@ class Valoraciontienda {
 //propiedades
   int? idvaloracion;
   int? idusuarioadmin;
+  String?idusuario;
   String? tiendaperteneciente;
   String? valoraciontienda;
 
   Valoraciontienda();
   Valoraciontienda.fromMap(map) {
     this.idvaloracion = map['idvaloracion'];
-    this.idusuarioadmin = map['idusuario'];
+    this.idusuario= map['idusuario'];
+    this.idusuarioadmin= map ['idusuarioadmin'];
     this.tiendaperteneciente = map['tienda'];
     this.valoraciontienda = map['valoracion'];
+  }
+
+  allvaloracion()async{
+    var conn = await Database().conexion();
+
+    try {
+      var resultado = await conn.query('SELECT * FROM usuarios');
+      List<Valoraciontienda> usuarios =
+          resultado.map((row) => Valoraciontienda.fromMap(row)).toList();
+      return usuarios;
+    } catch (e) {
+      print(e);
+    } finally {
+      await conn.close();
+    }
   }
 
   insertarValoracion() async {
     var conn = await Database().conexion();
     try {
       await conn.query(
-          'INSERT INTO valoraciones(idusarioadmin,tiendaperteneciente,valoraciontienda) VALUES (?,?,?)',
-          [idusuarioadmin, tiendaperteneciente, valoraciontienda]);
-      print('Valoracion insertado correctamente');
+          'INSERT INTO valoraciones(idusario,tiendaperteneciente,valoraciontienda) VALUES (?,?,?)',
+          [idusuario, tiendaperteneciente, valoraciontienda]);
+      print('Valoracion insertada correctamente');
     } catch (e) {
       print(e);
     } finally {

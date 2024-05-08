@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'dart:math';
-import 'dart:svg';
 import 'usuario.dart';
 import 'database.dart';
 import 'valoraciontienda.dart';
@@ -45,8 +44,6 @@ class app {
     stdout.writeln(
         '''Hola, bienvenido $usuarioadmin, tenemos que verificar tu entidad, por
         favor rellene estos datos:''');
-    stdout.write('2-idusuarioadmin admin:');
-    usuarioadmin.idusuarioadmin = stdin.readLineSync();
     stdout.write('2-nombre admin:');
     usuarioadmin.nombreadmin = stdin.readLineSync();
     stdout.write('3-password admin:');
@@ -95,7 +92,7 @@ class app {
     }
   }
 
-  crearValoracion(usuario) {
+  crearValoracion(usuario){
     Valoraciontienda valoracion = Valoraciontienda();
     valoracion.idusuarioadmin = usuario.idusuario;
     valoracion.tiendaperteneciente = elegirTienda();

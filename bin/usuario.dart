@@ -14,7 +14,7 @@ class Usuario {
   int? dinerogastado = 0;
 
   String?usuarioadmin;
-  String? idusuarioadmin;
+  int? idusuarioadmin;
   String? nombreadmin;
   String? passwordadmin;
   String? tiendaperteneciente;

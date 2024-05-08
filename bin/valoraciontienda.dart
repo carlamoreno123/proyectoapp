@@ -3,24 +3,24 @@ import 'Database.dart';
 class Valoraciontienda {
 //propiedades
   int? idvaloracion;
-  int? idusuario;
-  String? tienda;
-  String? valoracion;
+  int? idusuarioadmin;
+  String? tiendaperteneciente;
+  String? valoraciontienda;
 
   Valoraciontienda();
   Valoraciontienda.fromMap(map) {
     this.idvaloracion = map['idvaloracion'];
-    this.idusuario = map['idusuario'];
-    this.tienda = map['tienda'];
-    this.valoracion = map['valoracion'];
+    this.idusuarioadmin = map['idusuario'];
+    this.tiendaperteneciente = map['tienda'];
+    this.valoraciontienda = map['valoracion'];
   }
 
   insertarValoracion() async {
     var conn = await Database().conexion();
     try {
       await conn.query(
-          'INSERT INTO jugador(idusario,tienda,valoracion) VALUES (?,?,?)',
-          [idusuario, tienda, valoracion]);
+          'INSERT INTO valoraciones(idusarioadmin,tiendaperteneciente,valoraciontienda) VALUES (?,?,?)',
+          [idusuarioadmin, tiendaperteneciente, valoraciontienda]);
       print('Valoracion insertado correctamente');
     } catch (e) {
       print(e);

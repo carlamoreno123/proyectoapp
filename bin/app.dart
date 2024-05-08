@@ -42,18 +42,16 @@ class app {
     stdout.write(
         '''Hola, bienvenido estas apunto de resgistrarte en este centro comercial, porfavor
       rellene estos datos:''');
-    stdout.write('1- nombre:');
+    stdout.write('1-idusuario admin:');
     usuario.nombre = stdin.readLineSync();
-    stdout.write('2-apelido:');
+    stdout.write('2-nombre admin:');
     usuario.apellido = stdin.readLineSync();
-    stdout.write('3-contraseña:');
+    stdout.write('3-password admin:');
     usuario.password = stdin.readLineSync();
-    stdout.write('4-direccion:');
+    stdout.write('4-tienda perteneciente:');
     usuario.direccion = stdin.readLineSync();
-    stdout.write('5-direccioncorreo:');
-    usuario.direccioncorreo = stdin.readLineSync();
-    usuario.admin = true;
-    usuario.insertarUsuario();
+   
+    usuario.insertarUsuarioAdmin();
   }
 
   registrarusuario() async {
@@ -71,6 +69,7 @@ class app {
     usuario.direccion = stdin.readLineSync();
     stdout.write('5-direccioncorreo:');
     usuario.direccioncorreo = stdin.readLineSync();
+
     usuario.insertarUsuario();
   }
 
@@ -95,10 +94,10 @@ class app {
 
   crearValoracion(usuario) {
     Valoraciontienda valoracion = Valoraciontienda();
-    valoracion.idusuario = usuario.idusuario;
-    valoracion.tienda = elegirTienda();
+    valoracion.idusuarioadmin = usuario.idusuario;
+    valoracion.tiendaperteneciente = elegirTienda();
     stdout.write('deja tu valoración:');
-    valoracion.valoracion = stdin.readLineSync();
+    valoracion.valoraciontienda = stdin.readLineSync();
     valoracion.insertarValoracion();
   }
 

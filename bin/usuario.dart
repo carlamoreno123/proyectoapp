@@ -10,6 +10,15 @@ class Usuario {
   String? password;
   String? direccion;
   String? direccioncorreo;
+  int? vecesidas = 0;
+  int? dinerogastado = 0;
+
+
+  String? idusuarioadmin;
+  String? nombreadmin;
+  String? passwordadmin;
+  String? tiendaperteneciente;
+  int? dinerototaltienda;
   bool admin = false;
 
   //Constructores
@@ -79,8 +88,21 @@ class Usuario {
     var conn = await Database().conexion();
     try {
       await conn.query(
-          'INSERT INTO jugador(nombre,apellido,password,direccion,direccioncorreo) VALUES (?,?,?,?,?)',
-          [nombre, apellido, password, direccion, direccioncorreo]);
+          'INSERT INTO usuarios(nombre,apellido,password,direccion,direccioncorreo,vecesidas,dinerogastado) VALUES (?,?,?,?,?,?,?)',
+          [nombre, apellido, password, direccion, direccioncorreo,vecesidas,dinerogastado]);
+      print('Usuario insertado correctamente');
+    } catch (e) {
+      print(e);
+    } finally {
+      await conn.close();
+    }
+  }
+   insertarUsuarioAdmin() async {
+    var conn = await Database().conexion();
+    try {
+      await conn.query(
+          'INSERT INTO usuarios(idusuarioadmin,nombreadmin,passwordadmin,tiendaperteneciente) VALUES (?,?,?,?)',
+          [idusuarioadmin,nombreadmin,passwordadmin,tiendaperteneciente]);
       print('Usuario insertado correctamente');
     } catch (e) {
       print(e);

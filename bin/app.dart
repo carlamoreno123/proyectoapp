@@ -92,16 +92,22 @@ class app {
     }
   }
 
-  crearValoracion(usuario){
-    Valoraciontienda valoracion = Valoraciontienda();
-    valoracion.idusuarioadmin = usuario.idusuario;
-    valoracion.tiendaperteneciente = elegirTienda();
+  crearValoracion(usuario)async{
+    Valoraciontienda valoraciontienda = Valoraciontienda();
+    valoraciontienda.idusuario = usuario.idusuario;
+    valoraciontienda.tiendaperteneciente = elegirTienda();
     stdout.write('deja tu valoración:');
-    valoracion.valoraciontienda = stdin.readLineSync();
-    valoracion.insertarValoracion();
-  }
+    valoraciontienda.valoraciontienda = stdin.readLineSync();
+    print(valoraciontienda.idusuario);
+    print(valoraciontienda.tiendaperteneciente);
+    print(valoraciontienda.valoraciontienda);
 
-  elegirTienda() {
+    valoraciontienda.insertarValoracion();
+  
+  }
+  
+
+  elegirTienda(){
     Map<int, String> tiendas = {1: 'Zara', 2: 'Carrefour'};
     int? opcion;
     do {
@@ -142,12 +148,13 @@ class app {
     stdout.writeln('Introduce tu constraseña');
     usuario.password = stdin.readLineSync();
     var resultado = await usuario.loginUsuario();
+    print(resultado.idusuario);
     if (resultado == false) {
       stdout.writeln('Tu nombre de usuario o contraseña son incorrectos');
       menuInicial();
     } else {
       if (usuario.admin) {
-        menuAdmin(usuario);
+        menuAdmin(resultado);
       }
       menuLogueado(resultado);
     }

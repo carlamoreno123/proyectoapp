@@ -40,8 +40,9 @@ class Usuario {
         Usuario usuario = Usuario.fromMap(resultado.first);
         if (this.password == usuario.password) {
           return usuario;
-        } else
+        } else {
           return false;
+        }
       } catch (e) {
         print(e);
         return false;
@@ -57,10 +58,11 @@ class Usuario {
       var resultado = await conn
           .query('SELECT * FROM usuarios WHERE nombre = ?', [this.nombre]);
       Usuario usuario = Usuario.fromMap(resultado.first);
-      if (this.password == usuario.password) {
+      if (password == usuario.password) {
         return usuario;
-      } else
+      } else {
         return false;
+      }
     } catch (e) {
       print(e);
       return false;

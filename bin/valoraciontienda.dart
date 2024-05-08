@@ -3,7 +3,6 @@ import 'Database.dart';
 class Valoraciontienda {
 //propiedades
   int? idvaloracion;
-  int? idusuarioadmin;
   String?idusuario;
   String? tiendaperteneciente;
   String? valoraciontienda;
@@ -12,9 +11,8 @@ class Valoraciontienda {
   Valoraciontienda.fromMap(map) {
     this.idvaloracion = map['idvaloracion'];
     this.idusuario= map['idusuario'];
-    this.idusuarioadmin= map ['idusuarioadmin'];
-    this.tiendaperteneciente = map['tienda'];
-    this.valoraciontienda = map['valoracion'];
+    this.tiendaperteneciente = map['tiendaperteneciente'];
+    this.valoraciontienda = map['valoraciontienda'];
   }
 
   allvaloracion()async{
@@ -31,7 +29,6 @@ class Valoraciontienda {
       await conn.close();
     }
   }
-
   insertarValoracion() async {
     var conn = await Database().conexion();
     try {

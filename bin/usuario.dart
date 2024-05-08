@@ -13,7 +13,7 @@ class Usuario {
   int? vecesidas = 0;
   int? dinerogastado = 0;
 
-
+  String?usuarioadmin;
   String? idusuarioadmin;
   String? nombreadmin;
   String? passwordadmin;

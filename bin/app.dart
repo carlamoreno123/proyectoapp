@@ -1,7 +1,10 @@
 import 'dart:io';
+import 'dart:math';
+import 'dart:svg';
 import 'usuario.dart';
 import 'database.dart';
 import 'valoraciontienda.dart';
+
 
 class app {
   //Constructores
@@ -31,27 +34,27 @@ class app {
 
   comprobarAdmin() {
     String? respuesta = stdin.readLineSync() ?? 'e';
-    if (respuesta == 'porno') {
+    if (respuesta == '12345') {
       registrarAdmin();
     }
     print('contraseña incorrecta');
   }
 
   registrarAdmin() {
-    Usuario usuario = Usuario();
-    stdout.write(
-        '''Hola, bienvenido estas apunto de resgistrarte en este centro comercial, porfavor
-      rellene estos datos:''');
-    stdout.write('1-idusuario admin:');
-    usuario.nombre = stdin.readLineSync();
+    Usuario usuarioadmin = Usuario();
+    stdout.writeln(
+        '''Hola, bienvenido $usuarioadmin, tenemos que verificar tu entidad, por
+        favor rellene estos datos:''');
+    stdout.write('2-idusuarioadmin admin:');
+    usuarioadmin.idusuarioadmin = stdin.readLineSync();
     stdout.write('2-nombre admin:');
-    usuario.apellido = stdin.readLineSync();
+    usuarioadmin.nombreadmin = stdin.readLineSync();
     stdout.write('3-password admin:');
-    usuario.password = stdin.readLineSync();
+    usuarioadmin.passwordadmin=stdin.readLineSync();
     stdout.write('4-tienda perteneciente:');
-    usuario.direccion = stdin.readLineSync();
+    usuarioadmin.tiendaperteneciente = stdin.readLineSync();
    
-    usuario.insertarUsuarioAdmin();
+    usuarioadmin.insertarUsuarioAdmin();
   }
 
   registrarusuario() async {

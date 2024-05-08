@@ -55,7 +55,6 @@ class Database {
         direccioncorreo VARCHAR(50) NOT NULL,
         vecesidas INT NOT NULL,
         dinerogastado VARCHAR(20) NOT NULL
-
       )''');
     print('Tabla usuarios creada');
   }
@@ -65,7 +64,6 @@ class Database {
         nombreadmin VARCHAR(50) NOT NULL,
         passwordadmin VARCHAR(50) NOT NULL,
         tiendaperteneciente VARCHAR(50) NOT NULL
-
        )''');
     print('Tabla usuarioadmin creada');
   }
@@ -74,17 +72,16 @@ class Database {
         idusuarioadmin INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         nombreadmin VARCHAR(50) NOT NULL UNIQUE,
         dinerototaltienda INT NOT NULL
-
         )''');
     print('Tabla ingresos creada');
   
   }
   _crearTablavaloraciones(conn)async{
     await conn.query ('''CREATE TABLE IF NOT EXISTS valoraciones(
-        idusuario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        idvaloracion INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        idusuario INT NOT NULL,
         tiendaperteneciente VARCHAR(50) NOT NULL,
         valoraciontienda VARCHAR(200) NOT NULL
-
         )''');
     print('Tabla valoraciones creada');
   }

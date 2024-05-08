@@ -103,9 +103,9 @@ class Usuario {
     var conn = await Database().conexion();
     try {
       await conn.query(
-          'INSERT INTO usuarios(idusuarioadmin,nombreadmin,passwordadmin,tiendaperteneciente) VALUES (?,?,?,?)',
+          'INSERT INTO usuarioadmin(idusuarioadmin,nombreadmin,passwordadmin,tiendaperteneciente) VALUES (?,?,?,?)',
           [idusuarioadmin,nombreadmin,passwordadmin,tiendaperteneciente]);
-      print('Usuario insertado correctamente');
+      print('Usuario admin insertado correctamente');
     } catch (e) {
       print(e);
     } finally {

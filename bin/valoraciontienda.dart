@@ -3,7 +3,7 @@ import 'Database.dart';
 class Valoraciontienda {
 //propiedades
   int? idvaloracion;
-  String?idusuario;
+  int? idusuario;
   String? tiendaperteneciente;
   String? valoraciontienda;
 
@@ -19,7 +19,7 @@ class Valoraciontienda {
     var conn = await Database().conexion();
 
     try {
-      var resultado = await conn.query('SELECT * FROM usuarios');
+      var resultado = await conn.query('SELECT * FROM valoraciones');
       List<Valoraciontienda> usuarios =
           resultado.map((row) => Valoraciontienda.fromMap(row)).toList();
       return usuarios;
@@ -32,9 +32,8 @@ class Valoraciontienda {
   insertarValoracion() async {
     var conn = await Database().conexion();
     try {
-      await conn.query(
-          'INSERT INTO valoraciones(idusario,tiendaperteneciente,valoraciontienda) VALUES (?,?,?)',
-          [idusuario, tiendaperteneciente, valoraciontienda]);
+    print(tiendaperteneciente);
+      await conn.query('INSERT INTO valoraciones(idusuario,tiendaperteneciente,valoraciontienda) VALUES (?,?,?)',[idusuario, tiendaperteneciente, valoraciontienda]);
       print('Valoracion insertada correctamente');
     } catch (e) {
       print(e);

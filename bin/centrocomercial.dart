@@ -6,6 +6,5 @@ import 'valoraciontienda.dart';
 main() async {
   await Database().instalacion(); 
   app().menuInicial();
-  app().crearValoracion(Valoraciontienda());
   
 }
